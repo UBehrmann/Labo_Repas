@@ -1,6 +1,5 @@
 // PRG1_E
 //---------------------------------------------------------------------------------
-// Demo           : XXXXXXXXXX
 // Fichier        : main.cpp
 // Auteur(s)      : Vasques Dario et Urs Behrmann
 // But            : Calculer l'addition d'un repas.
