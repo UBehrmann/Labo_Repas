@@ -24,18 +24,20 @@ int main() {
     const int WIDTH_VALEUR = 8;
     const int WIDTH_NBRE = 2;
 
-    // Variables constants pour
+    // Variables constants pour stocker les prix
     const float PRIX_ENTREE     =  4.50f;
     const float PRIX_PLAT       = 12.50f;
     const float PRIX_BOISSON    =  3.00f;
     const float PRIX_DESSERT    =  6.00f;
     const float PRIX_CAFE       =  2.80f;
 
+    // Variable de saisies
     int nbreEntree;
     int nbrePlat;
     int nbreBoisson;
     int nbreDessert;
     int nbreCafe;
+
 
     // Fixe la précision des chiffres des cout.
     cout << fixed << setprecision(2);
@@ -56,11 +58,13 @@ int main() {
          << right << setw(WIDTH_VALEUR) << PRIX_CAFE << endl
          << "NB : limite de saisie [0 - 10]" << endl << endl;
 
+
     // Entrée des données
     cout << "votre commande" << endl
          << "==============" << endl
          << left << setw(WIDTH_TEXT) << "- nbre d'entree" << ':';
     cin >> nbreEntree;
+    // Test de la saisie afin de savoir si elle appartient à l'intervale
     if (nbreEntree > 10 || nbreEntree < 0) return EXIT_FAILURE;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -84,12 +88,15 @@ int main() {
     if (nbreCafe > 10 || nbreCafe < 0) return EXIT_FAILURE;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+
+    // Variables de calcul des totaux
     float totalEntrees  = (float)nbreEntree * PRIX_ENTREE;
     float totalPlat     = (float)nbrePlat * PRIX_PLAT;
     float totalBoisson  = (float)nbreBoisson * PRIX_BOISSON;
     float totalDessert  = (float)nbreDessert * PRIX_DESSERT;
     float totalCafe     = (float)nbreCafe * PRIX_CAFE;
     float total         = totalEntrees + totalPlat + totalBoisson + totalDessert + totalCafe;
+
 
     // Impression du Ticket
     cout << endl << "votre ticket" << endl
