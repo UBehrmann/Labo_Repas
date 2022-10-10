@@ -46,19 +46,19 @@ int main() {
     cout << fixed << setprecision(PRECISION);
 
     // Message d'introduction du programme
-    cout << "bonjour, ce programme ..." << endl
-         << "voici le prix des elements" << endl
-         << "=========================" << endl
-         << left << setw(LARGEUR_TEXT) << "- entree" << ':'
-         << right << setw(LARGEUR_VALEUR) << PRIX_ENTREE << endl
-         << left << setw(LARGEUR_TEXT) << "- plat" << ':'
-         << right << setw(LARGEUR_VALEUR) << PRIX_PLAT << endl
-         << left << setw(LARGEUR_TEXT) << "- boisson" << ':'
-         << right << setw(LARGEUR_VALEUR) << PRIX_BOISSON << endl
-         << left << setw(LARGEUR_TEXT) << "- dessert" << ':'
-         << right << setw(LARGEUR_VALEUR) << PRIX_DESSERT << endl
-         << left << setw(LARGEUR_TEXT) << "- cafe" << ':'
-         << right << setw(LARGEUR_VALEUR) << PRIX_CAFE << endl
+    cout << "bonjour, ce programme ..."     << endl
+         << "voici le prix des elements"    << endl
+         << "========================="     << endl
+         << left    << setw(LARGEUR_TEXT)       << "- entree"   << ':'
+         << right   << setw(LARGEUR_VALEUR)     << PRIX_ENTREE  << endl
+         << left    << setw(LARGEUR_TEXT)       << "- plat"     << ':'
+         << right   << setw(LARGEUR_VALEUR)     << PRIX_PLAT    << endl
+         << left    << setw(LARGEUR_TEXT)       << "- boisson"  << ':'
+         << right   << setw(LARGEUR_VALEUR)     << PRIX_BOISSON << endl
+         << left    << setw(LARGEUR_TEXT)       << "- dessert"  << ':'
+         << right   << setw(LARGEUR_VALEUR)     << PRIX_DESSERT << endl
+         << left    << setw(LARGEUR_TEXT)       << "- cafe"     << ':'
+         << right   << setw(LARGEUR_VALEUR)     << PRIX_CAFE    << endl
          << "NB : limite de saisie [0 - 10]" << endl << endl;
 
 
@@ -131,31 +131,31 @@ int main() {
 
 
     // Impression du Ticket
-    cout << endl << "votre ticket" << endl
-         << "===========" << endl
+    cout << endl << "votre ticket"  << endl
+         << "==========="           << endl
          << "- "
-         << right << setw(LARGEUR_NBRE) << nbreEntree
-         << left << setw(LARGEUR_TEXT) << " entrees" << ':'
-         << right << setw(LARGEUR_VALEUR) << totalEntrees << endl
+         << right   << setw(LARGEUR_NBRE)   << nbreEntree
+         << left    << setw(LARGEUR_TEXT)   << " entrees"   << ':'
+         << right   << setw(LARGEUR_VALEUR) << totalEntrees << endl
          << "- "
-         << right << setw(LARGEUR_NBRE) << nbrePlat
-         << left << setw(LARGEUR_TEXT) << " plats" << ':'
-         << right << setw(LARGEUR_VALEUR) << totalPlat << endl
+         << right   << setw(LARGEUR_NBRE)   << nbrePlat
+         << left    << setw(LARGEUR_TEXT)   << " plats"     << ':'
+         << right   << setw(LARGEUR_VALEUR) << totalPlat    << endl
          << "- "
-         << right << setw(LARGEUR_NBRE) << nbreBoisson
-         << left << setw(LARGEUR_TEXT) << " boissons" << ':'
-         << right << setw(LARGEUR_VALEUR) << totalBoisson << endl
+         << right   << setw(LARGEUR_NBRE)   << nbreBoisson
+         << left    << setw(LARGEUR_TEXT)   << " boissons"  << ':'
+         << right   << setw(LARGEUR_VALEUR) << totalBoisson << endl
          << "- "
-         << right << setw(LARGEUR_NBRE) << nbreDessert
-         << left << setw(LARGEUR_TEXT) << " desserts" << ':'
-         << right << setw(LARGEUR_VALEUR) << totalDessert << endl
+         << right   << setw(LARGEUR_NBRE)   << nbreDessert
+         << left    << setw(LARGEUR_TEXT)   << " desserts"  << ':'
+         << right   << setw(LARGEUR_VALEUR) << totalDessert << endl
          << "- "
-         << right << setw(LARGEUR_NBRE) << nbreCafe
-         << left << setw(LARGEUR_TEXT) << " cafes" << ':'
-         << right << setw(LARGEUR_VALEUR) << totalCafe << endl
+         << right   << setw(LARGEUR_NBRE)   << nbreCafe
+         << left    << setw(LARGEUR_TEXT)   << " cafes"     << ':'
+         << right   << setw(LARGEUR_VALEUR) << totalCafe    << endl
          << "- "
-         << right << setw(LARGEUR_NBRE + LARGEUR_TEXT) << " TOTAL" << ':'
-         << right << setw(LARGEUR_VALEUR) << total << endl
+         << right   << setw(LARGEUR_NBRE + LARGEUR_TEXT)    << " TOTAL" << ':'
+         << right   << setw(LARGEUR_VALEUR) << total        << endl
          << "merci de votre visite" << endl << endl;
 
 
