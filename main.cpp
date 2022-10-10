@@ -5,6 +5,7 @@
 // But            : Calculer l'addition d'un repas.
 // Modifications  :
 // Remarque(s)    : NILL
+// Compilateur    : MinGW w64 9.0 / C++20
 //---------------------------------------------------------------------------------
 
 #include <iostream>     // Gestion des I/O
@@ -12,16 +13,19 @@
 #include <stdlib.h>     // Return Success
 #include <iomanip>      // Setprecision
 
+#define MESSAGE_ERREUR cout << endl << "Valeur hors limite. Pressez ENTER pour quitter"
+#define VIDE_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
+
 using namespace std;    // Simplification std::cin <=> cin ; std::cout <=> cin
 
 int main() {
-    //---------------------------------------------------------------------------------
     //Programme
 
     // Variables constants pour formater le text
-    const int WIDTH_TEXT = 20;
-    const int WIDTH_VALEUR = 8;
-    const int WIDTH_NBRE = 2;
+    const int LARGEUR_TEXT      = 20;
+    const int LARGEUR_VALEUR    = 8;
+    const int LARGEUR_NBRE      = 2;
+    const int PRECISION         = 2;
 
     // Variables constants pour stocker les prix
     const float PRIX_ENTREE     =  4.50f;
@@ -39,56 +43,85 @@ int main() {
 
 
     // Fixe la précision des chiffres des cout.
-    cout << fixed << setprecision(2);
+    cout << fixed << setprecision(PRECISION);
 
     // Message d'introduction du programme
     cout << "bonjour, ce programme ..." << endl
          << "voici le prix des elements" << endl
          << "=========================" << endl
-         << left << setw(WIDTH_TEXT) << "- entree" << ':'
-         << right << setw(WIDTH_VALEUR) << PRIX_ENTREE << endl
-         << left << setw(WIDTH_TEXT) << "- plat" << ':'
-         << right << setw(WIDTH_VALEUR) << PRIX_PLAT << endl
-         << left << setw(WIDTH_TEXT) << "- boisson" << ':'
-         << right << setw(WIDTH_VALEUR) << PRIX_BOISSON << endl
-         << left << setw(WIDTH_TEXT) << "- dessert" << ':'
-         << right << setw(WIDTH_VALEUR) << PRIX_DESSERT << endl
-         << left << setw(WIDTH_TEXT) << "- cafe" << ':'
-         << right << setw(WIDTH_VALEUR) << PRIX_CAFE << endl
+         << left << setw(LARGEUR_TEXT) << "- entree" << ':'
+         << right << setw(LARGEUR_VALEUR) << PRIX_ENTREE << endl
+         << left << setw(LARGEUR_TEXT) << "- plat" << ':'
+         << right << setw(LARGEUR_VALEUR) << PRIX_PLAT << endl
+         << left << setw(LARGEUR_TEXT) << "- boisson" << ':'
+         << right << setw(LARGEUR_VALEUR) << PRIX_BOISSON << endl
+         << left << setw(LARGEUR_TEXT) << "- dessert" << ':'
+         << right << setw(LARGEUR_VALEUR) << PRIX_DESSERT << endl
+         << left << setw(LARGEUR_TEXT) << "- cafe" << ':'
+         << right << setw(LARGEUR_VALEUR) << PRIX_CAFE << endl
          << "NB : limite de saisie [0 - 10]" << endl << endl;
 
 
     // Entrée des données
     cout << "votre commande" << endl
          << "==============" << endl
-         << left << setw(WIDTH_TEXT) << "- nbre d'entree" << ':';
+         << left << setw(LARGEUR_TEXT) << "- nbre d'entree" << ':';
     cin >> nbreEntree;
+    VIDE_BUFFER;
+
     // Test de la saisie afin de savoir si elle appartient à l'intervale
-    if (nbreEntree > 10 || nbreEntree < 0) return EXIT_FAILURE;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if (nbreEntree > 10 || nbreEntree < 0) {
+        MESSAGE_ERREUR;
+        VIDE_BUFFER;
+        return EXIT_FAILURE;
+    }
 
-    cout << left << setw(WIDTH_TEXT) << "- nbre de plat" << ':';
+
+    cout << left << setw(LARGEUR_TEXT) << "- nbre de plat" << ':';
     cin >> nbrePlat;
-    if (nbrePlat > 10 || nbrePlat < 0) return EXIT_FAILURE;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    VIDE_BUFFER;
 
-    cout << left << setw(WIDTH_TEXT) << "- nbre de boisson" << ':';
+    if (nbrePlat > 10 || nbrePlat < 0) {
+        MESSAGE_ERREUR;
+        VIDE_BUFFER;
+        return EXIT_FAILURE;
+    }
+
+
+    cout << left << setw(LARGEUR_TEXT) << "- nbre de boisson" << ':';
     cin >> nbreBoisson;
-    if (nbreBoisson > 10 || nbreBoisson < 0) return EXIT_FAILURE;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    VIDE_BUFFER;
 
-    cout << left << setw(WIDTH_TEXT) << "- nbre de dessert" << ':';
+    if (nbreBoisson > 10 || nbreBoisson < 0) {
+        MESSAGE_ERREUR;
+        VIDE_BUFFER;
+        return EXIT_FAILURE;
+    }
+
+
+    cout << left << setw(LARGEUR_TEXT) << "- nbre de dessert" << ':';
     cin >> nbreDessert;
-    if (nbreDessert > 10 || nbreDessert < 0) return EXIT_FAILURE;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    VIDE_BUFFER;
 
-    cout << left << setw(WIDTH_TEXT) << "- nbre de cafe" << ':';
+    if (nbreDessert > 10 || nbreDessert < 0) {
+        MESSAGE_ERREUR;
+        VIDE_BUFFER;
+        return EXIT_FAILURE;
+    }
+
+
+    cout << left << setw(LARGEUR_TEXT) << "- nbre de cafe" << ':';
     cin >> nbreCafe;
-    if (nbreCafe > 10 || nbreCafe < 0) return EXIT_FAILURE;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    VIDE_BUFFER;
+
+    if (nbreCafe > 10 || nbreCafe < 0) {
+        MESSAGE_ERREUR;
+        VIDE_BUFFER;
+        return EXIT_FAILURE;
+    }
 
 
-    // Variables de calcul des totaux
+    // Variables des totaux et calcul des totaux
     float totalEntrees  = (float)nbreEntree * PRIX_ENTREE;
     float totalPlat     = (float)nbrePlat * PRIX_PLAT;
     float totalBoisson  = (float)nbreBoisson * PRIX_BOISSON;
@@ -101,33 +134,33 @@ int main() {
     cout << endl << "votre ticket" << endl
          << "===========" << endl
          << "- "
-         << right << setw(WIDTH_NBRE) << nbreEntree
-         << left << setw(WIDTH_TEXT) << " entrees" << ':'
-         << right << setw(WIDTH_VALEUR) << totalEntrees << endl
+         << right << setw(LARGEUR_NBRE) << nbreEntree
+         << left << setw(LARGEUR_TEXT) << " entrees" << ':'
+         << right << setw(LARGEUR_VALEUR) << totalEntrees << endl
          << "- "
-         << right << setw(WIDTH_NBRE) << nbrePlat
-         << left << setw(WIDTH_TEXT) << " plats" << ':'
-         << right << setw(WIDTH_VALEUR) << totalPlat << endl
+         << right << setw(LARGEUR_NBRE) << nbrePlat
+         << left << setw(LARGEUR_TEXT) << " plats" << ':'
+         << right << setw(LARGEUR_VALEUR) << totalPlat << endl
          << "- "
-         << right << setw(WIDTH_NBRE) << nbreBoisson
-         << left << setw(WIDTH_TEXT) << " boissons" << ':'
-         << right << setw(WIDTH_VALEUR) << totalBoisson << endl
+         << right << setw(LARGEUR_NBRE) << nbreBoisson
+         << left << setw(LARGEUR_TEXT) << " boissons" << ':'
+         << right << setw(LARGEUR_VALEUR) << totalBoisson << endl
          << "- "
-         << right << setw(WIDTH_NBRE) << nbreDessert
-         << left << setw(WIDTH_TEXT) << " desserts" << ':'
-         << right << setw(WIDTH_VALEUR) << totalDessert << endl
+         << right << setw(LARGEUR_NBRE) << nbreDessert
+         << left << setw(LARGEUR_TEXT) << " desserts" << ':'
+         << right << setw(LARGEUR_VALEUR) << totalDessert << endl
          << "- "
-         << right << setw(WIDTH_NBRE) << nbreCafe
-         << left << setw(WIDTH_TEXT) << " cafes" << ':'
-         << right << setw(WIDTH_VALEUR) << totalCafe << endl
+         << right << setw(LARGEUR_NBRE) << nbreCafe
+         << left << setw(LARGEUR_TEXT) << " cafes" << ':'
+         << right << setw(LARGEUR_VALEUR) << totalCafe << endl
          << "- "
-         << right << setw(WIDTH_NBRE + WIDTH_TEXT) << " TOTAL" << ':'
-         << right << setw(WIDTH_VALEUR) << total << endl
+         << right << setw(LARGEUR_NBRE + LARGEUR_TEXT) << " TOTAL" << ':'
+         << right << setw(LARGEUR_VALEUR) << total << endl
          << "merci de votre visite" << endl << endl;
 
-    //---------------------------------------------------------------------------------
+
     //Fin de programme
     cout << "Pressez ENTER pour quitter";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');    // Vider le buffer
+    VIDE_BUFFER;
     return EXIT_SUCCESS;
 }
